@@ -1,0 +1,6 @@
+[submodule "R/libs/GLM"]
+	path = R/libs/GLM
+	url = https://github.com/g-truc/glm
+[submodule "R/libs/ImGui"]
+	path = R/libs/ImGui
+	url = https://github.com/ocornut/imgui
