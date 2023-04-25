@@ -8,14 +8,26 @@
 
 namespace R {
 	extern float dt;
+	extern int screenW;
+	extern int screenH;
 	class win {
 	public:
 		static GLFWwindow* window;
 		static bool running;
 		static int w;
 		static int h;
-		static int init(const int& x,const int& y,const char* name);
-		static void mode(const int& x = w, const int& y = h, const bool& fullScreen = false, const bool& hideCursor = false, const int& posX = 0, const int& posY = 30);
+
+		static int posX;
+		static int posY;
+		static bool fullScreenMode;
+
+		static int init(const char* name = "R", const unsigned int& width = 0, const unsigned int& height = 0,const bool& fullscreen = false, const bool& resizable = false);
+		
+		static void fullScreen(const bool& full = true, const int& width = w, const int& height = h);
+		static void hideCursor(const bool& hideCursor = true);
+		static void setSize(const int& width = w, const int& height = h);
+		static void setPos(const int& x = posX, const int& y = posY);
+		
 		static void clear();
 		static void draw();
 		static void close();

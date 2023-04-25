@@ -4,27 +4,60 @@ namespace R {
         GLFWwindow* win::window = nullptr;
         int win::w = 0;
         int win::h = 0;
-        bool win::running = !glfwWindowShouldClose(R::win::window);
+        bool win::running = true;
+
+        int win::posX = 0;
+        int win::posY = 30;
+        bool win::fullScreenMode = false;
 
         float dt = 0.0f;
+        int screenW = 0;
+        int screenH = 0;
         float lastFrame = 0.0f;
         double prevTime = 0.0;
         double timeDiff;
         float currentFrame = glfwGetTime();
 
+        GLFWmonitor* monitor = NULL;
 
-        int win::init(const int& x, const int& y, const char* name) {
-            win::w = x;
-            win::h = y;
+        void reloadWindow() {
+            glfwSetWindowMonitor(win::window, monitor, win::posX, win::posY, win::w, win::h, 0);
+            glViewport(0, 0, win::w, win::h);
+        }
 
-            glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-            glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
-
+        int win::init( const char* name, const unsigned int& width, const unsigned int& height, const bool& fullscreen, const bool& resizable) {
             if (!glfwInit())
                 return -1;
 
+            const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+
+            screenW = mode->width;
+            screenH = mode->height;
+
+            glfwWindowHint(GLFW_RESIZABLE, resizable);
+            glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+            glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+
+            if (width == 0 or height == 0) {
+                win::w = screenW;
+                win::h = screenH;
+            }
+            else {
+                win::w = width;
+                win::h = height;
+            }
+
+            posX = (screenW - win::w) / 2;
+            posY = (screenH - win::h) / 2;
 
             win::window = glfwCreateWindow(win::w, win::h, name, NULL, NULL);
+
+            if (fullscreen) {
+                win::fullScreen();
+            }
+
+            win::setPos();
+
             if (!window)
             {
                 glfwTerminate();
@@ -40,27 +73,40 @@ namespace R {
             glViewport(0, 0, win::w, win::h);
         }
 
-        void win::mode(const int& x, const int& y,const bool& fullScreen, const bool& hideCursor, const int& posX, const int& posY) {
+        void win::fullScreen(const bool& full, const int& x, const int& y) {
+            win::fullScreenMode = full;
             win::w = x;
             win::h = y;
-            std::cout << win::h;
-            GLFWmonitor* monitor = NULL;
-            if (fullScreen)
+            if (win::fullScreenMode)
                 monitor = glfwGetPrimaryMonitor();
-            if (hideCursor) {
+            else
+                monitor = NULL;
+            std::cout << win::fullScreenMode << "\n";
+            reloadWindow();
+        }
+
+        void win::setSize(const int& width, const int& height) {
+            win::w = width;
+            win::h = height;
+            reloadWindow();
+        }
+
+        void win::setPos(const int& x, const int& y) {
+            win::posX = x;
+            win::posY = y;
+            reloadWindow();
+        }
+
+        void win::hideCursor(const bool& hideCursor) {
+            if (hideCursor)
                 glfwSetInputMode(win::window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-            }
-            else {
+            else
                 glfwSetInputMode(win::window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-            }
-            
-            glfwSetWindowMonitor(win::window, monitor, posX, posY, win::w, win::h, 0);
-            
         }
 
         void win::clear() {
             win::running = !glfwWindowShouldClose(R::win::window);
-            glClear(GL_COLOR_BUFFER_BIT);
+            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
             currentFrame = glfwGetTime();
             dt = currentFrame - lastFrame;
             timeDiff = currentFrame - prevTime;
@@ -79,14 +125,11 @@ namespace R {
 
         void win::initGui()
         {
-            // Setup Dear ImGui context
             IMGUI_CHECKVERSION();
             ImGui::CreateContext();
             ImGuiIO& io = ImGui::GetIO();
-            // Setup Platform/Renderer bindings
             ImGui_ImplGlfw_InitForOpenGL(R::win::window, true);
             ImGui_ImplOpenGL3_Init("#version 330");
-            // Setup Dear ImGui style
             ImGui::StyleColorsDark();
         }
 

@@ -160,7 +160,7 @@
     <ClCompile Include="libs\ImGui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="libs\ImGui\imgui_tables.cpp" />
     <ClCompile Include="libs\ImGui\imgui_widgets.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="example.cpp" />
     <ClCompile Include="window\window.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
