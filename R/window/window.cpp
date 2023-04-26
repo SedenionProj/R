@@ -37,6 +37,7 @@ namespace R {
             glfwWindowHint(GLFW_RESIZABLE, resizable);
             glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
             glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+            glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
             if (width == 0 or height == 0) {
                 win::w = screenW;
