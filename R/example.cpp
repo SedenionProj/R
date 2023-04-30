@@ -4,7 +4,19 @@ int main(void)
 {
     R::win::init();
     R::win::initGui();
+    float vertices[] = {
+        -0.5f, -0.5f, 0.0f,
+         0.5f, -0.5f, 0.0f,
+         0.0f,  0.5f, 0.0f
+    };
     
+    Shader shaders("Basic.vert", "Basic.frag");
+    VertexArray va;
+    VertexBuffer vb(sizeof(vertices),vertices);
+    
+    va.AddBuffer(vb, 3, 3, 0);
+
+    //IBO, UBO, VBO, EBO, SSBO, FBO (PBO,TBO)
     bool hold = false;
     
     while (R::win::running)
@@ -21,6 +33,11 @@ int main(void)
 		else {
 			hold = false;
 		}
+
+        shaders.Bind();
+        //glBindVertexArray(VAO);
+        va.Bind();
+        glDrawArrays(GL_TRIANGLES, 0, 3);
 
         ImGui::Text("R");
 

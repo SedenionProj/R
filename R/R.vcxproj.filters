@@ -13,6 +13,12 @@
     <ClInclude Include="libs\ImGui\imstb_textedit.h" />
     <ClInclude Include="libs\ImGui\imstb_truetype.h" />
     <ClInclude Include="libs\ImGui\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="glObj\VertexBuffer.h" />
+    <ClInclude Include="glObj\IndexBuffer.h" />
+    <ClInclude Include="renderer\Renderer.h" />
+    <ClInclude Include="glObj\Shader.h" />
+    <ClInclude Include="glObj\Texture.h" />
+    <ClInclude Include="glObj\VertexArray.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="example.cpp" />
@@ -24,5 +30,15 @@
     <ClCompile Include="libs\ImGui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="libs\ImGui\imgui_tables.cpp" />
     <ClCompile Include="libs\ImGui\imgui_widgets.cpp" />
+    <ClCompile Include="glObj\IndexBuffer.cpp" />
+    <ClCompile Include="renderer\Renderer.cpp" />
+    <ClCompile Include="glObj\Shader.cpp" />
+    <ClCompile Include="glObj\Texture.cpp" />
+    <ClCompile Include="glObj\VertexArray.cpp" />
+    <ClCompile Include="glObj\VertexBuffer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Basic.frag" />
+    <None Include="Basic.vert" />
   </ItemGroup>
 </Project>
