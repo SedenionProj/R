@@ -6,7 +6,7 @@ VertexArray::VertexArray() : pos(0){
 VertexArray::~VertexArray() {
 	glDeleteVertexArrays(1, &ID);
 }
-void VertexArray::AddBuffer(const VertexBuffer& vb, int size, int stride, int offset) {
+void VertexArray::AddBuffer(const R::VertexBuffer& vb, int size, int stride, int offset) {
 	Bind();
 	vb.Bind();
 	glVertexAttribPointer(pos, size, GL_FLOAT, GL_FALSE, stride * sizeof(float), (void*)(offset * sizeof(float)));

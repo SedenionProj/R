@@ -1,12 +1,12 @@
 #pragma once
 #include <GL/glew.h>
-#include "../glObj/VertexArray.h"
-#include "../glObj/IndexBuffer.h"
+#include "../glObj/Buffer.h"
 #include "../glObj/Shader.h"
+#include "../glObj/VertexArray.h"
 
 namespace R {
-	struct Renderer {
-		void Draw(const VertexArray& va, const IndexBuffer& ib, const Shader& shader);
-		void Clear();
+	class renderer {
+	public:
+		static void draw(const VertexArray& va, const R::IndexBuffer& ib, const Shader& shader);
 	};
 }

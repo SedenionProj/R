@@ -1,6 +1,6 @@
 #pragma once
 #include <GL/glew.h>
-#include "VertexBuffer.h"
+#include "Buffer.h"
 
 class VertexArray {
 private:
@@ -9,8 +9,7 @@ private:
 public:
 	VertexArray();
 	~VertexArray();
-	void AddBuffer(const VertexBuffer& vb, int size, int stride, int offset);
+	void AddBuffer(const R::VertexBuffer& vb, int size, int stride, int offset);
 	void Bind()const;
 	void Unbind()const;
-	void Test(const VertexBuffer& vb, int size, int stride, int offset);
 };

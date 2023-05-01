@@ -18,6 +18,9 @@ namespace R {
         double timeDiff;
         float currentFrame = glfwGetTime();
 
+        const unsigned short OPENGL_MAJOR_VERSION = 4;
+        const unsigned short OPENGL_MINOR_VERSION = 6;
+
         GLFWmonitor* monitor = NULL;
 
         void reloadWindow() {
@@ -35,8 +38,8 @@ namespace R {
             screenH = mode->height;
 
             glfwWindowHint(GLFW_RESIZABLE, resizable);
-            glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-            glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+            glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, OPENGL_MAJOR_VERSION);
+            glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, OPENGL_MINOR_VERSION);
             glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
             if (width == 0 or height == 0) {
@@ -114,10 +117,9 @@ namespace R {
             lastFrame = currentFrame;
         }
 
-        void win::draw() {
+        void win::display() {
             glfwSwapBuffers(win::window);
             glfwPollEvents();
-
         }
 
         void win::close() {

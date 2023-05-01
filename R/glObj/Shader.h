@@ -6,6 +6,7 @@
 #include <iostream>
 #include <fstream>
 #include "../libs/glm/glm/glm.hpp"
+#include "buffer.h"
 
 class Shader {
 private:
@@ -15,6 +16,8 @@ public:
 	~Shader();
 	void Bind() const;
 	void Unind() const;
+	inline unsigned int getId() const { return ID; }
+	void setUBO(const std::string& name, const R::UniformBuffer& UBO, const unsigned int pos = 0);
 	void setBool(const std::string& name, bool value) const;
 	void setInt(const std::string& name, int value) const;
 	void setFloat(const std::string& name, float value) const;

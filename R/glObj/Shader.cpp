@@ -1,6 +1,7 @@
 #include "Shader.h"
 #include "../libs/stb_image/stb_image.h"
 
+
 Shader::Shader(const char* vertexPath, const char* fragmentPath) {
 	// 1. retrieve the vertex/fragment source code from filePath
 	std::string vertexCode;
@@ -89,6 +90,12 @@ void Shader::Bind() const{
 
 void Shader::Unind() const {
 	glUseProgram(0);
+}
+
+void Shader::setUBO(const std::string& name, const R::UniformBuffer& UBO, const unsigned int pos) {
+	unsigned int index = glGetUniformBlockIndex(ID, name.c_str());
+	glUniformBlockBinding(ID, index, pos);
+	glBindBufferBase(GL_UNIFORM_BUFFER, pos, UBO.getId());
 }
 
 void Shader::setBool(const std::string& name, bool value) const {

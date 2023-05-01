@@ -29,7 +29,7 @@ namespace R {
 		static void setPos(const int& x = posX, const int& y = posY);
 		
 		static void clear();
-		static void draw();
+		static void display();
 		static void close();
 		static void initGui();
 		static void clearGui();

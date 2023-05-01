@@ -139,12 +139,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="glObj\IndexBuffer.h" />
+    <ClInclude Include="glObj\buffer.h" />
+    <ClInclude Include="glObj\UniformBuffer.h" />
+    <ClInclude Include="glObj\VertexArray.h" />
     <ClInclude Include="renderer\Renderer.h" />
     <ClInclude Include="glObj\Shader.h" />
     <ClInclude Include="glObj\Texture.h" />
-    <ClInclude Include="glObj\VertexArray.h" />
-    <ClInclude Include="glObj\VertexBuffer.h" />
     <ClInclude Include="libs\ImGui\imconfig.h" />
     <ClInclude Include="libs\ImGui\imgui.h" />
     <ClInclude Include="libs\ImGui\imgui_impl_glfw.h" />
@@ -159,12 +159,12 @@
     <ClInclude Include="window\window.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="glObj\IndexBuffer.cpp" />
+    <ClCompile Include="glObj\Buffer.cpp" />
+    <ClCompile Include="glObj\UniformBuffer.cpp" />
+    <ClCompile Include="glObj\VertexArray.cpp" />
     <ClCompile Include="renderer\Renderer.cpp" />
     <ClCompile Include="glObj\Shader.cpp" />
     <ClCompile Include="glObj\Texture.cpp" />
-    <ClCompile Include="glObj\VertexArray.cpp" />
-    <ClCompile Include="glObj\VertexBuffer.cpp" />
     <ClCompile Include="libs\ImGui\imgui.cpp" />
     <ClCompile Include="libs\ImGui\imgui_demo.cpp" />
     <ClCompile Include="libs\ImGui\imgui_draw.cpp" />
