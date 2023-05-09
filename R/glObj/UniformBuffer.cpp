@@ -1,6 +1,6 @@
 #include "UniformBuffer.h"
 
-UniformBuffer::UniformBuffer(const int size, const float data[],const unsigned int& pos)
+UniformBuffer::UniformBuffer(const int size, const float data[],const unsigned int pos)
 {
 	glGenBuffers(1, &ID);
 	glBindBuffer(GL_UNIFORM_BUFFER, ID);

@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="camera\camera.h" />
     <ClInclude Include="glObj\buffer.h" />
     <ClInclude Include="glObj\UniformBuffer.h" />
     <ClInclude Include="glObj\VertexArray.h" />
@@ -159,6 +160,7 @@
     <ClInclude Include="window\window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="camera\camera.cpp" />
     <ClCompile Include="glObj\Buffer.cpp" />
     <ClCompile Include="glObj\UniformBuffer.cpp" />
     <ClCompile Include="glObj\VertexArray.cpp" />
@@ -176,8 +178,8 @@
     <ClCompile Include="window\window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Basic.frag" />
-    <None Include="Basic.vert" />
+    <None Include="shaders\basicFrag.glsl" />
+    <None Include="shaders\basicVert.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -6,3 +6,4 @@
 #include "glObj/VertexArray.h"
 #include "renderer/Renderer.h"
 #include "glObj/buffer.h"
+#include "camera/camera.h"

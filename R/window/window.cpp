@@ -28,7 +28,7 @@ namespace R {
             glViewport(0, 0, win::w, win::h);
         }
 
-        int win::init( const char* name, const unsigned int& width, const unsigned int& height, const bool& fullscreen, const bool& resizable) {
+        int win::init( const char* name, const unsigned int width, const unsigned int height, const bool fullscreen, const bool resizable) {
             if (!glfwInit())
                 return -1;
 
@@ -77,7 +77,7 @@ namespace R {
             glViewport(0, 0, win::w, win::h);
         }
 
-        void win::fullScreen(const bool& full, const int& x, const int& y) {
+        void win::fullScreen(const bool full, const int x, const int y) {
             win::fullScreenMode = full;
             win::w = x;
             win::h = y;
@@ -89,19 +89,19 @@ namespace R {
             reloadWindow();
         }
 
-        void win::setSize(const int& width, const int& height) {
+        void win::setSize(const int width, const int height) {
             win::w = width;
             win::h = height;
             reloadWindow();
         }
 
-        void win::setPos(const int& x, const int& y) {
+        void win::setPos(const int x, const int y) {
             win::posX = x;
             win::posY = y;
             reloadWindow();
         }
 
-        void win::hideCursor(const bool& hideCursor) {
+        void win::hideCursor(const bool hideCursor) {
             if (hideCursor)
                 glfwSetInputMode(win::window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
             else

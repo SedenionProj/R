@@ -2,9 +2,10 @@
 
 int main(void)
 {
-    //TODO :template type, FBO (PBO,TBO), mesh, model, presets, scene, camera, compute shaders, samper2D
+    //TODO : FBO (PBO,TBO), mesh, model, presets, scene, camera(better class), compute shaders, samper2D, image2D
     R::win::init();
     R::win::initGui();
+
     float vertices[] =
     {
             -1.0f, -1.0f, -0.0f,
@@ -18,21 +19,23 @@ int main(void)
             0, 1, 2,
             0, 3, 1
     };
+
     
-    Shader shaders("Basic.vert", "Basic.frag");
+
+    Shader shaders("shaders/basicVert.glsl", "shaders/basicFrag.glsl");
     VertexArray va;
     R::VertexBuffer vb(sizeof(vertices),vertices);
     R::IndexBuffer ib(sizeof(indices),indices);
     va.AddBuffer(vb, 3, 3, 0);
 
-    float data[] = {
-        0.5f,0.5f,0.0f,1.0f,
-    };
-
-    R::ShaderStorageBuffer ssbo(sizeof(data), data,5);
+    R::PerspectiveCamera cam(1);
+    cam.setDirection(45, 0.0);
 
     bool hold = false;
+
+    glfwSetCursorPosCallback(R::win::window, R::PerspectiveCamera::mouse_callback);
     
+    R::win::hideCursor();
     while (R::win::running)
     {
         
