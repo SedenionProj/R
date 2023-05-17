@@ -61,19 +61,16 @@ namespace R {
 	UniformBuffer::~UniformBuffer() {
 		glDeleteBuffers(1, &ID);
 	}
-
 	template <typename T>
-	void UniformBuffer::data(const int offset, T data, const int size, const unsigned int binding) {
+	void UniformBuffer::data(const int offset, const T& data, const int size, const unsigned int binding) {
 		_binding = binding;
 		glBindBuffer(GL_UNIFORM_BUFFER, ID);
 		glBufferSubData(GL_UNIFORM_BUFFER, offset, size, &data[0]);
 		glBindBufferBase(GL_UNIFORM_BUFFER, _binding, ID);
 		glBindBuffer(GL_UNIFORM_BUFFER, 0);
 	}
-	template
-	void UniformBuffer::data<glm::mat4>(const int, glm::mat4, const int, const unsigned int);
-	template
-	void UniformBuffer::data<glm::vec4>(const int, glm::vec4, const int, const unsigned int);
+	template void UniformBuffer::data<glm::mat4>(const int,const glm::mat4&, const int, const unsigned int);
+	template void UniformBuffer::data<glm::vec4>(const int,const glm::vec4&, const int, const unsigned int);
 
 	void UniformBuffer::Bind() const {
 		glBindBuffer(GL_ARRAY_BUFFER, ID);
@@ -100,17 +97,17 @@ namespace R {
 		glBindBuffer(GL_SHADER_STORAGE_BUFFER, 0);
 	}
 	template <typename T>
-	void ShaderStorageBuffer::data(const int offset, T data, const int size, const unsigned int binding) {
+	void ShaderStorageBuffer::data(const int offset, const T& data, const int size, const unsigned int binding) {
 		_binding = binding;
 		glBindBuffer(GL_SHADER_STORAGE_BUFFER, ID);
-		glBufferSubData(GL_SHADER_STORAGE_BUFFER, offset, size, &data[0]);
+		glBufferSubData(GL_SHADER_STORAGE_BUFFER, offset, size, &data);
 		glBindBufferBase(GL_SHADER_STORAGE_BUFFER, _binding, ID);
 		glBindBuffer(GL_SHADER_STORAGE_BUFFER, 0);
 	}
-	template
-		void ShaderStorageBuffer::data<glm::mat4>(const int, glm::mat4, const int, const unsigned int);
-	template
-		void ShaderStorageBuffer::data<glm::vec4>(const int, glm::vec4, const int, const unsigned int);
+	template void ShaderStorageBuffer::data<glm::mat4>(const int,const glm::mat4&, const int, const unsigned int);
+	template void ShaderStorageBuffer::data<glm::vec4>(const int,const glm::vec4&, const int, const unsigned int);
+	template void ShaderStorageBuffer::data<std::vector<bool>>(const int, const std::vector<bool>&, const int, const unsigned int);
+
 	ShaderStorageBuffer::~ShaderStorageBuffer() {
 		glDeleteBuffers(1, &ID);
 	}

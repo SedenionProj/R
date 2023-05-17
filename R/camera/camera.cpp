@@ -21,8 +21,6 @@ namespace R {
 		VP = new UniformBuffer(2 * sizeof(glm::mat4));
 		VP->data(0, projection, sizeof(glm::mat4), _binding);
 		VP->data(sizeof(glm::mat4), view, sizeof(glm::mat4), _binding);
-		
-		
 	}
 	PerspectiveCamera::~PerspectiveCamera()
 	{

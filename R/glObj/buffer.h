@@ -42,7 +42,7 @@ namespace R {
 		UniformBuffer(const int size);
 		~UniformBuffer();
 		template <typename T>
-		void data(const int offset, T data, const int size, const unsigned int binding = 0);
+		void data(const int offset,const T& data, const int size, const unsigned int binding = 0);
 		inline unsigned int getId() const { return ID; }
 		void Bind() const;
 		void Unbind() const;
@@ -58,7 +58,7 @@ namespace R {
 		~ShaderStorageBuffer();
 		inline unsigned int getId() const { return ID; }
 		template <typename T>
-		void data(const int offset, T data, const int size, const unsigned int binding = 0);
+		void data(const int offset,const T& data, const int size, const unsigned int binding = 0);
 		void Bind() const;
 		void Unbind() const;
 	};
