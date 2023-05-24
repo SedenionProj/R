@@ -9,9 +9,10 @@
 namespace R {
 	class PerspectiveCamera{
 	public:
-		static float yaw;
-		static float pitch;
-		static glm::vec3 pos ;
+		static float _yaw;
+		static float _pitch;
+		static float _sensitivity;
+		static glm::vec3 _pos ;
 		static glm::vec3 front ;
 		static glm::vec3 up;
 		static glm::mat4 projection;
@@ -19,7 +20,7 @@ namespace R {
 		static UniformBuffer* VP;
 		static unsigned int _binding;
 		
-		PerspectiveCamera(const unsigned int binding = 0 );
+		PerspectiveCamera(const unsigned int binding = 0,const glm::vec3& worldPos = glm::vec3(0,0,0),const float sensitivity = 0.1f, const float yaw = 0, const float pitch=0);
 		
 		~PerspectiveCamera();
 
@@ -27,6 +28,7 @@ namespace R {
 
 		static void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 
+		static void setPosition(const glm::vec3& position);
 	};
 	
 }

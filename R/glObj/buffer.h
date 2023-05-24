@@ -38,7 +38,8 @@ namespace R {
 		unsigned int ID;
 		unsigned int _binding;
 	public:
-		UniformBuffer(const int size, const std::vector<glm::vec4>& data, const unsigned int binding = 0);
+		template <typename T>
+		UniformBuffer(const int size, const T& data, const unsigned int binding = 0);
 		UniformBuffer(const int size);
 		~UniformBuffer();
 		template <typename T>
@@ -53,7 +54,8 @@ namespace R {
 		unsigned int ID;
 		unsigned int _binding;
 	public:
-		ShaderStorageBuffer(const int size, const std::vector<glm::vec4>& data, const unsigned int binding = 0);
+		template <typename T>
+		ShaderStorageBuffer(const int size, const T& data, const unsigned int binding = 0);
 		ShaderStorageBuffer(const int size);
 		~ShaderStorageBuffer();
 		inline unsigned int getId() const { return ID; }

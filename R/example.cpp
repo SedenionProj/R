@@ -2,7 +2,7 @@
 
 int main(void)
 {
-    //TODO : FBO (PBO,TBO), mesh, model, presets, scene, camera(better class), compute shaders, samper2D, image2D
+    //TODO : FBO (PBO,TBO), mesh, model, presets, scene, camera (improve), compute shaders, samper2D, image2D
     R::win::init();
     R::win::initGui();
 
@@ -28,8 +28,7 @@ int main(void)
     R::IndexBuffer ib(sizeof(indices),indices);
     va.AddBuffer(vb, 3, 3, 0);
 
-    R::PerspectiveCamera cam(1);
-    cam.setDirection(45, 0.0);
+    R::PerspectiveCamera cam(1,glm::vec3(0,10,-5),0.1,90,-90);
 
     bool hold = false;
 
